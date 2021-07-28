@@ -6,4 +6,4 @@ async def get_response(query):
             f'https://kukichatbot.herokuapp.com/kuki/chatbot?message={query}'
         ) as resp:
             answer = await resp.json()
-            return answer["message"]["reply"]
+            return answer["reply"]
