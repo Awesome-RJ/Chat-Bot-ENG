@@ -1,9 +1,13 @@
-import aiohttp
+from requests.exceptions import HTTPError
+import requests
 
-async def get_response(query):
-    async with aiohttp.ClientSession() as ses:
-        async with ses.post(
-            f'https://kukichatbot.herokuapp.com/kuki/chatbot?message={query}'
-        ) as resp:
-            answer = await resp.json()
-            return answer["reply"]
+url = "https://api.affiliateplus.xyz/api"
+
+
+def chatbot(msg, ainame, onwer, userid):
+    base = f'{url}/chatbot?message={msg}&botname={ainame}&ownername={owner}&user={userid}'
+    response = requests.get(base)
+    response.raise_for_status()
+    jsonResponse = response.json()
+    message = (jsonResponse["message"])
+    return message
