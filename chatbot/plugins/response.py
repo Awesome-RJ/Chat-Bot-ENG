@@ -6,4 +6,4 @@ async def get_response(query):
             f'https://endpoint.mannu.me/?query={query}'
         ) as resp:
             answer = await resp.json()
-            return answer['response']['bot']
+            return answer["response"]["bot"]
